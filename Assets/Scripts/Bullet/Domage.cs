@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-class Domage:MonoBehaviour
+public class Domage:MonoBehaviour
 {
     public int domage = 1;
 }

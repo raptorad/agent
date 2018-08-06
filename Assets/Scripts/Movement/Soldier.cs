@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Soldier : BaseAgent {
+public class Soldier : BaseAgent
+{
 
+    /*struct Command
+    {
+        Transform destination;
+        Vector3 position;
+        bool looped; 
+    }*/
+    int currCommand = 0;
+    List<Command> commands;
     public float runAwayDistance = 1;
     public FindAlliesAndEnemies faae;
     public UnityEvent seeEvent;
@@ -30,6 +39,29 @@ public class Soldier : BaseAgent {
             seeEvent = new UnityEvent();
         if (cantSeeEvent == null)
             cantSeeEvent = new UnityEvent();
+        if(points.Length==0)
+        {
+            points = findPoints();
+        }
+        else
+        {
+            if(points[0]== null)
+            {
+                points = findPoints();
+            }
+        }
+        commands = new List<Command>();
+    }
+    private Transform[] findPoints()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("patrolDest");
+        Transform[] ret = new Transform[gos.Length];
+        for(int i=0;i<gos.Length;++i)
+        {
+            ret[i] = gos[i].transform;
+        }
+        return ret;
     }
 
     // Update is called once per frame
@@ -64,18 +96,24 @@ public class Soldier : BaseAgent {
                     if (CanSee(target.gameObject))
                     {
                         SetStateFight();
+                        return;
                     }
-                    return;
+                    else
+                    {
+                        Chase();
+                        return;
+                    }
                 }
                 else
                 {
-                    Chase();
-                    return;
+                    SetStatePatrol();
+                    return;  
                 }
             }
             else
             {
                 SetStateRunAway();
+                return;
             }
         }
         if (state == STATE_RUN_AWAY)
@@ -207,7 +245,19 @@ public class Soldier : BaseAgent {
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % points.Length;
     }
-
+    public void AddCommand(Command com)
+    {
+        commands.Add(com);
+    }
+    public void SetCommand(Command com)
+    {
+        commands.Clear();
+        commands.Add(com);
+    }
+    public void RemoveCommand(int index)
+    {
+        commands.Remove(commands[index]);
+    }
 
     void Patrol()
     {

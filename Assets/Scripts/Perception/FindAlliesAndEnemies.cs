@@ -6,7 +6,6 @@ public class FindAlliesAndEnemies : MonoBehaviour
 {
     public BaseAgent owner;
     static int numberOfPlayers=3;
-
     List<BaseAgent>[] foundAgents;
     int enemies;
     int allies;
@@ -34,7 +33,7 @@ public class FindAlliesAndEnemies : MonoBehaviour
         enemies = NumberOfEnemies();
         allies = NumberOfAllies();
         neutral = NumberOfNeutral();
-
+        removeNULLs();
     }
     public BaseAgent NearestEnemy()
     {
@@ -116,6 +115,21 @@ public class FindAlliesAndEnemies : MonoBehaviour
         if(ba)
         {
             foundAgents[ba.fraction].Remove(ba);
+        }
+    }
+    void removeNULLs()
+    {
+        for (int i = 0; i < numberOfPlayers; ++i)
+        {
+            for (int j = 0; j < foundAgents[i].Count; ++j)
+            {
+                BaseAgent ba = foundAgents[i][j];
+                if (ba == null)
+                {
+                    foundAgents[i].Remove(ba);
+                    continue;
+                }
+            }
         }
     }
 }

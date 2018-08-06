@@ -6,7 +6,6 @@ public class Gun : MonoBehaviour {
     public BaseAgent baseAgent;
     public Transform hole;
     public GameObject bullet;
-    // Use this for initialization
     public float shootInterval=0.5f;
     float shootTime=0;
     bool fireOpened;
@@ -22,7 +21,6 @@ public class Gun : MonoBehaviour {
     {
         fireOpened = false;
     }
-	// Update is called once per frame
 	void Update () {
         if(fireOpened)
         {
@@ -33,7 +31,6 @@ public class Gun : MonoBehaviour {
 	}
     void Shoot()
     {
-
         if(Time.time>shootTime && CanSee(baseAgent.destination.gameObject))
         {
             shootTime = Time.time + shootInterval;

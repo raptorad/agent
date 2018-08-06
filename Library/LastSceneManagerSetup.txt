@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/soldiers.unity
+- path: Assets/behaviours_example.unity
   isLoaded: 1
   isActive: 1

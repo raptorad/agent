@@ -29,6 +29,6 @@ class Health:MonoBehaviour
     void Die()
     {
         dieEvent.Invoke();
-        Destroy(gameObject, dyingTime);
+        Destroy(gameObject, dyingTime+0.01f);
     }
 }

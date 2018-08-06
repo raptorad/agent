@@ -82,15 +82,22 @@
     <Compile Include="Assets\Scripts\Bullet\MoveForward.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
     <Compile Include="Assets\Scripts\Health\HitHandler.cs" />
+    <Compile Include="Assets\Scripts\Interface\AddPatrollDestination.cs" />
     <Compile Include="Assets\Scripts\Interface\ClickPosition.cs" />
+    <Compile Include="Assets\Scripts\Interface\CommandMove.cs" />
+    <Compile Include="Assets\Scripts\Interface\CreateObject.cs" />
+    <Compile Include="Assets\Scripts\Interface\EventHandler.cs" />
+    <Compile Include="Assets\Scripts\Movement\AdvancedSoldier.cs" />
     <Compile Include="Assets\Scripts\Movement\BaseAgent.cs" />
     <Compile Include="Assets\Scripts\Movement\Chase.cs" />
     <Compile Include="Assets\Scripts\Movement\ChaseUntilSee.cs" />
+    <Compile Include="Assets\Scripts\Movement\Command.cs" />
     <Compile Include="Assets\Scripts\Movement\Patrol.cs" />
     <Compile Include="Assets\Scripts\Movement\RunAway.cs" />
     <Compile Include="Assets\Scripts\Movement\Soldier.cs" />
     <Compile Include="Assets\Scripts\Perception\FindAlliesAndEnemies.cs" />
     <Compile Include="Assets\Scripts\Perception\FindOtherAgent.cs" />
+    <Compile Include="Assets\Scripts\Selection.cs" />
     <Compile Include="Assets\Scripts\Tools\Gun.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
